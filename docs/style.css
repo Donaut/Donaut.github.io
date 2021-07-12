@@ -1,42 +1,24 @@
-@media screen and (orientation: landscape) {
-    .container {
-        width: 40%;
-    }
-}
-
-@media screen and (orientation: portrait) {
-    .container {
-        width: 70%;
-    }
-}
-
 * {
     box-sizing: border-box;
 }
 
-html,
-body {
-    font-size: 1.1em;
+html {
+    font-size: 1.2em;
     font-family: 'Share Tech Mono', monospace;
     background-color: #100F12;
     color: #FBF8FF;
-    margin: 0;
-    text-align: center;
-    height: 100%;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    margin: auto;
+    flex: 1 1 auto;
+    align-items: center;
+    max-height: 100%;
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
 }
 .header {
     margin: 0.8em 0px;
@@ -47,26 +29,18 @@ body {
 
 .header > a:not(:last-child)::after {
     content: "";
-    padding-right: 0.4em;
-    margin-right: 0.4em;
+    padding-right: 0.4rem;
+    margin-right: 0.4rem;
     border-right: 2px solid whitesmoke;
 }
 
-h1 {
-    font-weight: bold;
-    display: block;
-    letter-spacing: 2px;
-    margin: 0px;
-    padding: 0px;
+.header > a {
+    font-size: 1.3em;
 }
 
-h2,
-h3,
-h4,
-h5,
-h6 {
-    display: block;
-    margin: 0px;
+h1, h2, h3, h4, h5, h6 {
+    display: inline-block;
+    letter-spacing: 2px;
     padding: 0px;
 }
 
@@ -82,15 +56,56 @@ a:hover {
     font-weight: bold;
 }
 
-.image-container {
-    padding: 1.3em 0px;
+.center {
+    align-items: center;
+    justify-content: center;
 }
 
-.image-container img {
+.radius {
     border-radius: 50%;
 }
 
-.footer {
-    font-family: 'Ubuntu Mono', monospace;
-    margin-top: auto;
+.card-container {
+    position: relative;
+    max-width: 200px;
 }
+
+.bottom {
+    background-color: black;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+}
+
+.title, .text {
+    margin: 0px;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.text {
+    z-index: -1;
+}
+
+.card-container:hover .title {
+    z-index: -1;
+}
+
+.card-container:hover .text {
+    z-index: 0;
+    top: 50%;
+    animation: slide-top 0.3s 0.1s both;
+}
+
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); }
+
+@keyframes slide-top {
+    0% {
+        top: 100%;
+    }
+    100% {
+        top: 50%;
+    }
+  }
